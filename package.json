@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/louisefindlay23/recTV-web#readme",
     "dependencies": {
+        "axios": "^0.26.1",
         "connect-livereload": "^0.6.1",
         "dotenv": "^16.0.0",
         "ejs": "^3.1.6",

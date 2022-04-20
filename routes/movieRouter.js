@@ -35,6 +35,8 @@ let movieSearch = async (searchQuery) => {
 // Parse Form Data
 const bodyParser = require("body-parser");
 
+const axios = require("axios");
+
 // Initialise Movie Router
 const movieRouter = express.Router();
 movieRouter.use(
@@ -46,12 +48,17 @@ movieRouter.use(bodyParser.json());
 
 // Movie Routes
 movieRouter.get("/", function (req, res) {
-    movieRecommendations().then((movies) => {
-        console.info(movies.data.results[0]);
-        res.render("pages/movie/index", {
-            movies: movies,
+    axios
+        .get(
+            "https://api.themoviedb.org/3/search/movie?api_key=71fe3c36cb7df73b77feb2703d8c178c&language=en-US&query=Fantastic%20Beasts&page=1&include_adult=false"
+        )
+        .then(function (response) {
+            console.log(response.data.results);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
         });
-    });
 });
 
 movieRouter.post("/search", function (req, res) {
