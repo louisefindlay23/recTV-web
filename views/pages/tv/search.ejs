@@ -1,3 +1,7 @@
 <!DOCTYPE html>
 <h1>TV Search Page</h1>
+<% tv.data.results.forEach(function(show) { %>
+    <p><%= show.original_name %></p>
+    <% }); %>
+    
 </html>

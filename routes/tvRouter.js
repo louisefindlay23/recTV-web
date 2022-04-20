@@ -1,39 +1,9 @@
 const express = require("express");
 
-// TMDB API
-const MovieDB = require("node-themoviedb");
-const mdb = new MovieDB(process.env.TMDB_API_KEY);
-
-const tvID = "95480";
-
-const tvRecommendations = async () => {
-    try {
-        const args = {
-            pathParameters: {
-                tv_id: tvID,
-            },
-        };
-        const tv = await mdb.tv.getRecommendations(args);
-        return tv.data.results;
-    } catch (error) {
-        console.error(error);
-    }
-};
-
-let tvSearch = async (searchQuery) => {
-    try {
-        const args = {
-            query: searchQuery,
-        };
-        const tv = await mdb.search.TVShows(args);
-        return tv;
-    } catch (error) {
-        console.error(error);
-    }
-};
-
 // Parse Form Data
 const bodyParser = require("body-parser");
+
+const axios = require("axios");
 
 // Initialise TV Router
 const tvRouter = express.Router();
@@ -44,25 +14,29 @@ tvRouter.use(
 );
 tvRouter.use(bodyParser.json());
 
-// Spotify Routes
+// TV Routes
 tvRouter.get("/", function (req, res) {
-    const data = tvRecommendations();
-    console.info(data);
-    res.render("pages/tv/index");
+    res.render("pages/index");
 });
 
 tvRouter.post("/search", function (req, res) {
     const searchQuery = req.body.searchbar;
     console.info("You searched for " + searchQuery);
-    tvSearch(searchQuery)
-        .then((shows) => {
-            console.info(shows);
+    axios
+        .get("https://api.themoviedb.org/3/search/tv", {
+            params: {
+                api_key: process.env.TMDB_API_KEY,
+                query: searchQuery,
+            },
+        })
+        .then(function (response) {
+            console.info(response.data.results);
             res.render("pages/tv/search", {
-                shows: shows,
+                tv: response,
             });
         })
-        .catch((err) => {
-            console.error(err);
+        .catch(function (error) {
+            console.log(error);
         });
 });
 
