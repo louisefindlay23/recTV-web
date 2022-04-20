@@ -10,6 +10,21 @@
     <p>Display fallback image</p>
     <% } %>
 <p><%= tv.data.overview %></p>
+<h2>Recommendations</h2>
+<div class="grid-row">
+    <% tv.data.recommendations.results.forEach(function(show) { %>
+        <div class="card">
+            <a href="/tv/<%= show.id %>">
+                <% if (show.poster_path) { %>
+                <img src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>" />
+                <% } else { %>
+                <p>Display fallback image</p>
+                <% } %>
+                <p><%= show.original_name %></p>
+            </a>
+        </div>
+        <% }); %>
+        </div>
 <main>
     
 </main>

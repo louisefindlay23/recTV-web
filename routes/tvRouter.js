@@ -47,6 +47,7 @@ tvRouter.get("/:id", function (req, res) {
         .get(`https://api.themoviedb.org/3/tv/${req.params.id}`, {
             params: {
                 api_key: process.env.TMDB_API_KEY,
+                append_to_response: "recommendations",
             },
         })
         .then(function (response) {
