@@ -1,0 +1,40 @@
+.grid-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 2rem;
+    margin: 5%;
+}
+
+.card {
+    box-sizing: border-box;
+    padding: 2.5%;
+    margin: 2.5% 0;
+}
+
+.card img,
+.poster {
+    width: 100%;
+    height: 400px;
+    display: block;
+    margin: 2.5% auto;
+    border-radius: 4px;
+}
+
+.poster {
+    width: auto;
+}
+
+main p {
+    width: 80%;
+    margin: auto;
+}
+
+.card a {
+    text-decoration: none;
+}
+
+.card p {
+    width: auto;
+    margin-left: 0;
+}

@@ -1,7 +1,22 @@
 <!DOCTYPE html>
-<h1>TV Search Page</h1>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<h1>Search Results For TV Show: <%- searchQuery %></h1>
+<main>
+    <div class="grid-row">
 <% tv.data.results.forEach(function(show) { %>
-    <p><%= show.original_name %></p>
+    <div class="card">
+        <a href="/tv/<%= show.id %>">
+            <% if (show.poster_path) { %>
+            <img src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>" />
+            <% } else { %>
+            <p>Display fallback image</p>
+            <% } %>
+            <p><%= show.original_name %></p>
+        </a>
+    </div>
     <% }); %>
-    
+    </div>
+</main>
 </html>

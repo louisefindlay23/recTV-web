@@ -1,1 +1,16 @@
-TV Show Page
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<h1>TV Show: <%= tv.data.name %></h1>
+<main>
+<% if (tv.data.poster_path) { %>
+    <img class="poster" src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>" />
+    <% } else { %>
+    <p>Display fallback image</p>
+    <% } %>
+<p><%= tv.data.overview %></p>
+<main>
+    
+</main>
+</html>

@@ -33,6 +33,26 @@ tvRouter.post("/search", function (req, res) {
             console.info(response.data.results);
             res.render("pages/tv/search", {
                 tv: response,
+                searchQuery: searchQuery,
+            });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+});
+
+tvRouter.get("/:id", function (req, res) {
+    console.info(req.params.id);
+    axios
+        .get(`https://api.themoviedb.org/3/tv/${req.params.id}`, {
+            params: {
+                api_key: process.env.TMDB_API_KEY,
+            },
+        })
+        .then(function (response) {
+            console.info(response.data);
+            res.render("pages/tv/index", {
+                tv: response,
             });
         })
         .catch(function (error) {
