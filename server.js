@@ -38,19 +38,36 @@ if (process.env.NODE_ENV === "development") {
 const MovieDB = require("node-themoviedb");
 const mdb = new MovieDB(process.env.TMDB_API_KEY);
 
-(async () => {
+const movieRecommendations = async () => {
     try {
         const args = {
             pathParameters: {
                 movie_id: 384018,
             },
         };
-        const movie = await mdb.movie.getDetails(args);
-        console.log(movie.data);
+        const movie = await mdb.movie.getRecommendations(args);
+        console.log(movie.data.results);
     } catch (error) {
         console.error(error);
     }
-})();
+};
+
+const tvRecommendations = async () => {
+    try {
+        const args = {
+            pathParameters: {
+                tv_id: 4046,
+            },
+        };
+        const tv = await mdb.tv.getRecommendations(args);
+        console.log(tv.data.results);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+//movieRecommendations();
+tvRecommendations();
 
 // Root Route
 app.get("/", function (req, res) {
