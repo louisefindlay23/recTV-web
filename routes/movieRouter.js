@@ -20,10 +20,22 @@ let movieRecommendations = async () => {
     }
 };
 
+let movieSearch = async (searchQuery) => {
+    try {
+        const args = {
+            query: searchQuery,
+        };
+        const movie = await mdb.search.movies(args);
+        return movie;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 // Parse Form Data
 const bodyParser = require("body-parser");
 
-// Initialise Spotify Router
+// Initialise Movie Router
 const movieRouter = express.Router();
 movieRouter.use(
     bodyParser.urlencoded({
@@ -32,7 +44,7 @@ movieRouter.use(
 );
 movieRouter.use(bodyParser.json());
 
-// Spotify Routes
+// Movie Routes
 movieRouter.get("/", function (req, res) {
     movieRecommendations().then((movies) => {
         console.info(movies.data.results[0]);
@@ -40,6 +52,21 @@ movieRouter.get("/", function (req, res) {
             movies: movies,
         });
     });
+});
+
+movieRouter.post("/search", function (req, res) {
+    const searchQuery = req.body.searchbar;
+    console.info("You searched for " + searchQuery);
+    movieSearch(searchQuery)
+        .then((movies) => {
+            console.info(movies);
+            res.render("pages/movie/search", {
+                movies: movies,
+            });
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 });
 
 module.exports = movieRouter;
