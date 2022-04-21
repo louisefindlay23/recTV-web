@@ -1,4 +1,14 @@
-<h1>Movie Page</h1>
-<% movies.data.results.forEach(function(movie) { %>
-<p><%= movie.original_title %></p>
-<% }); %>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../../partials/head') %>
+        <title>Movie Page - recTV</title>
+    </head>
+
+    <body>
+        <h1>Movie Page</h1>
+        <% movies.data.results.forEach(function(movie) { %>
+        <p><%= movie.original_title %></p>
+        <% }); %>
+    </body>
+</html>

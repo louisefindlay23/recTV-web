@@ -1,6 +1,18 @@
 <!DOCTYPE html>
-<h1>Movie Page</h1>
-<% movies.data.results.forEach(function(movie) { %>
-    <p><%= movie.original_title %></p>
-    <% }); %>
+<html lang="en">
+    <head>
+        <%- include('../../partials/head') %>
+        <title>Movie Search - recTV</title>
+    </head>
+    <body>
+        <header>
+            <h1>Search Results - Movie Page</h1>
+        </header>
+        <main>
+            <% movies.data.results.forEach(function(movie) { %>
+            <p><%= movie.original_title %></p>
+            <% }); %>
+        </main>
+        <%- include('../../partials/footer') %>
+    </body>
 </html>

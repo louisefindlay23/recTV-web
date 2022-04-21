@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<head>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-</head>
+<html lang="en">
+    <head>
+        <%- include('../../partials/head') %>
+        <title>TV Show: <%= tv.data.name %> - recTV</title>
+    </head>
+ <header> 
 <h1>TV Show: <%= tv.data.name %></h1>
+</header>  
 <main>
 <% if (tv.data.poster_path) { %>
     <img class="poster" src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>" />
@@ -40,7 +44,7 @@
         </div>
         <% }); %>
         </div>
-<main>
-    
-</main>
+    </main>
+<%- include('../../partials/footer') %>
+</body>
 </html>
