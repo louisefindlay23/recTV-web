@@ -37,7 +37,24 @@
                 </div>
                 <% }); %>
             </div>
-            <h2>Recommendations</h2>
+            <h2>People Who Liked <%= tv.data.name %> Also Liked</h2>
+            <div class="grid-row">
+                <% tv.data.recommendations.results.forEach(function(show) { %>
+                <div class="card">
+                    <a href="/tv/<%= show.id %>">
+                        <% if (show.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= show.original_name %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+            <h2>People Who Disliked <%= tv.data.name %> Preferred</h2>
             <div class="grid-row">
                 <% tv.data.recommendations.results.forEach(function(show) { %>
                 <div class="card">
