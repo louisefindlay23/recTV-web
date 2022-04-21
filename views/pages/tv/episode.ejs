@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<h1>Episode <%= tv.data.episode_number %>: <%= tv.data.name %></h1>
+<main>
+<% if (tv.data.still_path) { %>
+    <img class="poster" src="https://www.themoviedb.org/t/p/w1280<%= tv.data.still_path %>" />
+<% } else { %>
+    <img src="/img/fallback-poster.png" />
+<% } %>
+<p><%= tv.data.overview %></p>
+<main>
+    
+</main>
+</html>
