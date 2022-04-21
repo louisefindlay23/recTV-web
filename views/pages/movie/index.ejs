@@ -6,9 +6,14 @@
     </head>
 
     <body>
-        <h1>Movie Page</h1>
-        <% movies.data.results.forEach(function(movie) { %>
-        <p><%= movie.original_title %></p>
-        <% }); %>
+        <header>
+            <h1>Movie Page</h1>
+        </header>
+        <main>
+            <% movies.data.results.forEach(function(movie) { %>
+            <p><%= movie.original_title %></p>
+            <% }); %>
+        </main>
+        <footer><%- include('../../partials/footer') %></footer>
     </body>
 </html>

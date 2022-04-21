@@ -4,25 +4,28 @@
         <%- include('../../partials/head') %>
         <title>Search Results For TV Show: <%- searchQuery %> - recTV</title>
     </head>
-    <h1>Search Results For TV Show: <%- searchQuery %></h1>
-    <main>
-        <div class="grid-row">
-            <% tv.data.results.forEach(function(show) { %>
-            <div class="card">
-                <a href="/tv/<%= show.id %>">
-                    <% if (show.poster_path) { %>
-                    <img
-                        src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
-                    />
-                    <% } else { %>
-                    <img src="/img/fallback-poster.png" />
-                    <% } %>
-                    <p><%= show.original_name %></p>
-                </a>
+    <body>
+        <header>
+            <h1>Search Results For TV Show: <%- searchQuery %></h1>
+        </header>
+        <main>
+            <div class="grid-row">
+                <% tv.data.results.forEach(function(show) { %>
+                <div class="card">
+                    <a href="/tv/<%= show.id %>">
+                        <% if (show.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= show.original_name %></p>
+                    </a>
+                </div>
+                <% }); %>
             </div>
-            <% }); %>
-        </div>
-    </main>
-    <%- include('../../partials/footer') %>
+        </main>
+        <footer><%- include('../../partials/footer') %></footer>
     </body>
 </html>

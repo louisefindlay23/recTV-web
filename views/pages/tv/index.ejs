@@ -4,47 +4,57 @@
         <%- include('../../partials/head') %>
         <title>TV Show: <%= tv.data.name %> - recTV</title>
     </head>
- <header> 
-<h1>TV Show: <%= tv.data.name %></h1>
-</header>  
-<main>
-<% if (tv.data.poster_path) { %>
-    <img class="poster" src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>" />
-<% } else { %>
-    <img src="/img/fallback-poster.png" />
-<% } %>
-<p><%= tv.data.overview %></p>
-<h2>Seasons</h2>
-<div class="grid-row">
-    <% tv.data.seasons.forEach(function(season) { %>
-        <div class="card">
-            <a href="/tv/<%= tv.data.id %>/season/<%= season.season_number %>">
-                <% if (season.poster_path) { %>
-                <img src="https://www.themoviedb.org/t/p/w1280<%= season.poster_path %>" />
-                <% } else { %>
-                <img src="/img/fallback-poster.png" />
-                <% } %>
-                <p><%= season.name %></p>
-            </a>
-        </div>
-        <% }); %>
-        </div>
-<h2>Recommendations</h2>
-<div class="grid-row">
-    <% tv.data.recommendations.results.forEach(function(show) { %>
-        <div class="card">
-            <a href="/tv/<%= show.id %>">
-                <% if (show.poster_path) { %>
-                <img src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>" />
-                <% } else { %>
-                <img src="/img/fallback-poster.png" />
-                <% } %>
-                <p><%= show.original_name %></p>
-            </a>
-        </div>
-        <% }); %>
-        </div>
-    </main>
-<%- include('../../partials/footer') %>
-</body>
+    <body>
+        <header>
+            <h1>TV Show: <%= tv.data.name %></h1>
+        </header>
+        <main>
+            <% if (tv.data.poster_path) { %>
+            <img
+                class="poster"
+                src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>"
+            />
+            <% } else { %>
+            <img src="/img/fallback-poster.png" />
+            <% } %>
+            <p><%= tv.data.overview %></p>
+            <h2>Seasons</h2>
+            <div class="grid-row">
+                <% tv.data.seasons.forEach(function(season) { %>
+                <div class="card">
+                    <a
+                        href="/tv/<%= tv.data.id %>/season/<%= season.season_number %>"
+                    >
+                        <% if (season.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= season.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= season.name %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+            <h2>Recommendations</h2>
+            <div class="grid-row">
+                <% tv.data.recommendations.results.forEach(function(show) { %>
+                <div class="card">
+                    <a href="/tv/<%= show.id %>">
+                        <% if (show.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= show.original_name %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+        </main>
+        <footer><%- include('../../partials/footer') %></footer>
+    </body>
 </html>
