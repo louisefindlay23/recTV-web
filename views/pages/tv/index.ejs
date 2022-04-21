@@ -6,9 +6,9 @@
 <main>
 <% if (tv.data.poster_path) { %>
     <img class="poster" src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>" />
-    <% } else { %>
-    <p>Display fallback image</p>
-    <% } %>
+<% } else { %>
+    <img src="/img/fallback-poster.png" />
+<% } %>
 <p><%= tv.data.overview %></p>
 <h2>Recommendations</h2>
 <div class="grid-row">
@@ -18,7 +18,7 @@
                 <% if (show.poster_path) { %>
                 <img src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>" />
                 <% } else { %>
-                <p>Display fallback image</p>
+                <img src="/img/fallback-poster.png" />
                 <% } %>
                 <p><%= show.original_name %></p>
             </a>

@@ -11,7 +11,7 @@
             <% if (show.poster_path) { %>
             <img src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>" />
             <% } else { %>
-            <p>Display fallback image</p>
+                <img src="/img/fallback-poster.png" />
             <% } %>
             <p><%= show.original_name %></p>
         </a>
