@@ -84,7 +84,7 @@ tvRouter.get("/:tv/season/:season/episode/:episode", function (req, res) {
         });
 });
 
-function dislikedRecommendations(genres) {
+async function dislikedRecommendations(genres) {
     let genre = genres[0].name;
     switch (genre) {
         case "Action & Adventure":
@@ -163,7 +163,8 @@ function dislikedRecommendations(genres) {
             },
         })
         .then(function (response) {
-            console.info(response.data.results);
+            //console.info(response.data.results);
+            return response.data.results;
         })
         .catch(function (error) {
             console.log(error);
@@ -178,9 +179,12 @@ tvRouter.get("/:id", function (req, res) {
                 append_to_response: "recommendations",
             },
         })
-        .then(function (response) {
-            console.info(response.data);
-            dislikedRecommendations(response.data.genres);
+        .then(async function (response) {
+            //console.info(response.data);
+            const oppositeGenre = await dislikedRecommendations(
+                response.data.genres
+            );
+            console.info(oppositeGenre);
             res.render("pages/tv/index", {
                 tv: response,
             });
