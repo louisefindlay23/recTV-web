@@ -1,46 +1,56 @@
 body {
-  font-family: "Lato";
+    font-family: "Lato";
 }
 
 .main-par {
-  font-size: large;
-  margin-bottom: 20px;
+    font-size: large;
+    margin-bottom: 20px;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
-h4{
+h4 {
     margin-top: 10px;
 }
 
-h5{
+h5 {
     margin-top: 10px;
     text-decoration: none;
 }
 
 .grid-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: auto;
-  grid-gap: 2rem;
-  margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 2rem;
+    margin-bottom: 5px;
 }
 
 .card img,
 .poster {
-  width: 100%;
-  height: 350px;
+    width: 100%;
+    height: 350px;
 }
 
 .season .card img {
-  height: auto;
+    height: auto;
 }
 
 .poster-main {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
 }
 
+.card .poster-episode {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.description-episode {
+    margin: 1rem 0;
+    text-align: center;
+}

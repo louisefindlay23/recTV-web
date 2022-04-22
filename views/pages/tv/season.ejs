@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('../../partials/head') %>
-  </head>
-  <body>
-    <header><%- include('../../partials/navbar') %></header>
+    <head>
+        <%- include('../../partials/head') %>
+    </head>
+    <body>
+        <header><%- include('../../partials/navbar') %></header>
 
-    <main>
-      <% if (tv.data.poster_path) { %>
-      <img
-        class="poster-main"
-        src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>"
-      />
-      <% } else { %>
-      <img alt="fallback-poster" src="/img/fallback-poster.png" />
-      <% } %>
-      <div class="container">
-        <br />
-        <h1>Season: <%= tv.data.season_number %></h1>
-        <p><%= tv.data.overview %></p>
-        <h2>Episodes</h2>
-        <div class="grid-row">
-          <% tv.data.episodes.forEach(function(episode) { %>
-          <div class="card">
-            <a
-              href="/tv/<%= id %>/season/<%= tv.data.season_number %>/episode/<%= episode.episode_number %>"
-            >
-              <% if (episode.still_path) { %>
-              <img
-                src="https://www.themoviedb.org/t/p/w1280<%= episode.still_path %>"
-              />
-              <% } else { %>
-              <img src="/img/fallback-poster.png" />
-              <% } %>
-              <p><%= episode.name %></p>
-            </a>
-          </div>
-          <% }); %>
-        </div>
-        <br />
-        <h4>Discover Recommendations for Another Show</h4>
-        <form id="search-media" method="POST">
-          <label for="searchbar">Search</label>
-          <input id="search-bar" name="searchbar" type="search" required />
-          <button id="search-tv" type="submit">Search</button>
-        </form>
-      </div>
-    </main>
-    <footer><%- include('../../partials/footer') %></footer>
-  </body>
+        <main>
+            <% if (tv.data.poster_path) { %>
+            <img
+                class="poster-main"
+                src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>"
+            />
+            <% } else { %>
+            <img alt="fallback-poster" src="/img/fallback-poster.png" />
+            <% } %>
+            <div class="container">
+                <br />
+                <h1>Season: <%= tv.data.season_number %></h1>
+                <p><%= tv.data.overview %></p>
+                <h2>Episodes</h2>
+                <div class="grid-row">
+                    <% tv.data.episodes.forEach(function(episode) { %>
+                    <div class="card">
+                        <a
+                            href="/tv/<%= id %>/season/<%= tv.data.season_number %>/episode/<%= episode.episode_number %>"
+                        >
+                            <% if (episode.still_path) { %>
+                            <img
+                                class="poster-episode"
+                                src="https://www.themoviedb.org/t/p/w1280<%= episode.still_path %>"
+                            />
+                            <% } else { %>
+                            <img src="/img/fallback-poster.png" />
+                            <% } %>
+                            <p class="description-episode">
+                                <%= episode.name %>
+                            </p>
+                        </a>
+                    </div>
+                    <% }); %>
+                </div>
+                <br />
+                <h4>Discover Recommendations for Another Show</h4>
+                <form id="search-media" method="POST">
+                    <label for="searchbar">Search</label>
+                    <input
+                        id="search-bar"
+                        name="searchbar"
+                        type="search"
+                        required
+                    />
+                    <button id="search-tv" type="submit">Search</button>
+                </form>
+            </div>
+        </main>
+        <footer><%- include('../../partials/footer') %></footer>
+    </body>
 </html>
