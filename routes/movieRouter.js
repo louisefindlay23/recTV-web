@@ -23,8 +23,7 @@ movieRouter.get("/", function (req, res) {
 movieRouter.post("/search", function (req, res) {
     const searchQuery = req.body.searchbar;
     console.info("You searched for " + searchQuery);
-    axios
-        .get("https://api.themoviedb.org/3/search/movie", {
+    axios.get("https://api.themoviedb.org/3/search/movie", {
             params: {
                 api_key: process.env.TMDB_API_KEY,
                 query: searchQuery,

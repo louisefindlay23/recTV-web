@@ -14,11 +14,11 @@
                 <div class="card">
                     <a href="/tv/<%= movie.id %>">
                         <% if (movie.poster_path) { %>
-                        <img
+                        <img alt=""
                             src="https://www.themoviedb.org/t/p/w1280<%= movie.poster_path %>"
                         />
                         <% } else { %>
-                        <img src="/img/fallback-poster.png" />
+                        <img alt="" src="/img/fallback-poster.png" />
                         <% } %>
                         <p><%= movie.original_title %></p>
                     </a>
@@ -26,6 +26,7 @@
                 <% }); %>
             </div>
         </main>
+        <br>
         <footer><%- include('../../partials/footer') %></footer>
     </body>
 </html>

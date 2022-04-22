@@ -10,7 +10,7 @@
       <h1>TV Show: <%= tv.data.name %></h1>
 
       <% if (tv.data.poster_path) { %>
-      <img
+      <img alt=""
         class="poster"
         src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>"
       />
@@ -115,11 +115,11 @@
                 <div class="card">
                     <a href="/tv/<%= show.id %>">
                         <% if (show.poster_path) { %>
-                        <img
+                        <img alt=""
                             src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
                         />
                         <% } else { %>
-                        <img src="/img/fallback-poster.png" />
+                        <img alt="" src="/img/fallback-poster.png" />
                         <% } %>
                         <p><%= show.original_name %></p>
                     </a>
