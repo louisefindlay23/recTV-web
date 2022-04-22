@@ -2,17 +2,76 @@
 <html lang="en">
     <head>
         <%- include('../../partials/head') %>
-        <title>Movie Page - recTV</title>
+        <title>Movie: <%= movie.data.original_title %> - recTV</title>
     </head>
-
     <body>
         <header>
-            <h1>Movie Page</h1>
+            <h1>Movie: <%= movie.data.original_title %></h1>
         </header>
         <main>
-            <% movies.data.results.forEach(function(movie) { %>
-            <p><%= movie.original_title %></p>
-            <% }); %>
+            <% if (movie.data.poster_path) { %>
+            <img
+                class="poster"
+                src="https://www.themoviedb.org/t/p/w1280<%= movie.data.poster_path %>"
+            />
+            <% } else { %>
+            <img src="/img/fallback-poster.png" />
+            <% } %>
+            <p><%= movie.data.overview %></p>
+            <h2>Movies in the <%= movie.data.belongs_to_collection.name %></h2>
+            <div class="grid-row">
+                <% tv.data.seasons.forEach(function(season) { %>
+                <div class="card">
+                    <a href="/movie/collection<%= tv.data.id %>">
+                        <% if (season.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= season.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= season.name %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+            <h2>People Who Liked <%= movie.data.name %> Also Liked</h2>
+            <div class="grid-row">
+                <% movie.data.recommendations.results.forEach(function(movie) {
+                %>
+                <div class="card">
+                    <a href="/tv/<%= movie.id %>">
+                        <% if (movie.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= movie.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= show.original_name %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
+            <h2>
+                People Who Disliked <%= movie.data.name %> Preferred Instead
+            </h2>
+            <div class="grid-row">
+                <% dislikedRecommendations.forEach(function(movie) { %>
+                <div class="card">
+                    <a href="/tv/<%= show.id %>">
+                        <% if (movie.poster_path) { %>
+                        <img
+                            src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= movie.original_name %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
         </main>
         <footer><%- include('../../partials/footer') %></footer>
     </body>

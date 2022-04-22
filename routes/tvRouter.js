@@ -183,7 +183,7 @@ tvRouter.get("/:id", function (req, res) {
             const oppositeGenre = await dislikedRecommendations(
                 response.data.genres
             );
-            console.info(oppositeGenre);
+            //console.info(oppositeGenre);
             res.render("pages/tv/index", {
                 tv: response,
                 dislikedRecommendations: oppositeGenre,
