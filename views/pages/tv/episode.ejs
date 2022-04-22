@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('../../partials/head') %>
-        <title>
-            Episode <%= tv.data.episode_number %>: <%= tv.data.name %> - recTV
-        </title>
-    </head>
-    <body>
-        <header>
-            <h1>Episode <%= tv.data.episode_number %>: <%= tv.data.name %></h1>
-        </header>
-        <main>
-            <% if (tv.data.still_path) { %>
-            <img
-                class="poster"
-                src="https://www.themoviedb.org/t/p/w1280<%= tv.data.still_path %>"
-            />
-            <% } else { %>
-            <img src="/img/fallback-poster.png" />
-            <% } %>
-            <p><%= tv.data.overview %></p>
-            <h3>Discover Recommendations for Another Show</h3>
-            <form id="search-media" method="POST">
-                <label for="searchbar">Search</label>
-                <input
-                    id="search-bar"
-                    name="searchbar"
-                    type="search"
-                    required
-                />
-                <button id="search-tv" type="submit">Search</button>
-            </form>
-        </main>
-        <footer><%- include('../../partials/footer') %></footer>
-    </body>
+  <head>
+    <%- include('../../partials/head') %>
+    <title>
+      Episode <%= tv.data.episode_number %>: <%= tv.data.name %> - recTV
+    </title>
+  </head>
+
+  <body>
+    <header>
+        <%- include('../../partials/navbar') %>
+    </header>
+    <main>
+        <h1>Episode <%= tv.data.episode_number %>: <%= tv.data.name %></h1>
+      <% if (tv.data.still_path) { %>
+      <img
+        class="poster"
+        alt="poster"
+        src="https://www.themoviedb.org/t/p/w1280<%= tv.data.still_path %>"
+      />
+      <% } else { %>
+      <img alt="fall-back" src="/img/fallback-poster.png" />
+      <% } %>
+      <p><%= tv.data.overview %></p>
+      <h3>Discover Recommendations for Another Show</h3>
+      <form id="search-media" method="POST">
+        <label for="searchbar">Search</label>
+        <input id="search-bar" name="searchbar" type="search" required />
+        <button id="search-tv" type="submit">Search</button>
+      </form>
+    </main>
+    <footer><%- include('../../partials/footer') %></footer>
+  </body>
+  
 </html>

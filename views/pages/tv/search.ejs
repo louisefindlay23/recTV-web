@@ -6,19 +6,23 @@
     </head>
     <body>
         <header>
-            <h1>Search Results For TV Show: <%- searchQuery %></h1>
+            <header>
+                <%- include('../../partials/navbar') %>        
+            </header>
+            
         </header>
         <main>
+            <h1 style="margin-left: 20px;">Search Results For TV Show: <%- searchQuery %></h1>
             <div class="grid-row">
                 <% tv.data.results.forEach(function(show) { %>
                 <div class="card">
                     <a href="/tv/<%= show.id %>">
                         <% if (show.poster_path) { %>
-                        <img
+                        <img alt=""
                             src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
                         />
                         <% } else { %>
-                        <img src="/img/fallback-poster.png" />
+                        <img alt="" src="/img/fallback-poster.png" />
                         <% } %>
                         <p><%= show.original_name %></p>
                     </a>

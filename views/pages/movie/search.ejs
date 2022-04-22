@@ -6,12 +6,27 @@
     </head>
     <body>
         <header>
-            <h1>Search Results - Movie Page</h1>
+            <%- include('../../partials/navbar') %>        
         </header>
         <main>
-            <% movies.data.results.forEach(function(movie) { %>
-            <p><%= movie.original_title %></p>
-            <% }); %>
+            <h4>Search Results</h4>
+
+            <div class="grid-row">
+                <% movies.data.results.forEach(function(movie) { %>
+                <div class="card">
+                    <a href="/tv/<%= movie.id %>">
+                        <% if (movie.poster_path) { %>
+                        <img alt="Poster"
+                            src="https://www.themoviedb.org/t/p/w1280<%= movie.poster_path %>"
+                        />
+                        <% } else { %>
+                        <img alt="fallback-poster" src="/img/fallback-poster.png" />
+                        <% } %>
+                        <p><%= movie.original_title %></p>
+                    </a>
+                </div>
+                <% }); %>
+            </div>
         </main>
         <footer><%- include('../../partials/footer') %></footer>
     </body>

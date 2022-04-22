@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include('../partials/head') %>
-        <title>recTV Recommendations</title>
-    </head>
-    <body>
-        <header>
-            <h1>recTV Recommendations</h1>
-        </header>
+  <head>
+    <%- include('../partials/head') %>
+    <title>recTV Recommendations</title>
+  </head>
 
-        <main>
-            <p>
-                Welcome to recTV, a show and movie recommendation app that shows
-                you what you wish to watch based not only on content you like
-                but also dislike.
-            </p>
-            <form id="search-media" method="POST">
-                <label for="searchbar">Search</label>
-                <input
-                    id="search-bar"
-                    name="searchbar"
-                    type="search"
-                    required
-                />
-                <button id="search-tv" type="submit">Search TV</button>
-                <button id="search-movie" type="submit">Search Movies</button>
-            </form>
-        </main>
-    </body>
-    <footer><%- include('../partials/footer') %></footer>
+  <body>
+    <header><%- include('../partials/navbar') %></header>
+
+    <main>
+      <div>
+        <br>
+        <br>
+        <br>
+      <p class="lead text-center mt-80">
+        Welcome to recTV, a show and movie recommendation app that shows you
+        what you wish to watch based not only on content you like but also
+        dislike.
+      </p>
+    </div>
+    
+    </main>
+  </body>
+  <footer><%- include('../partials/footer') %></footer>
 </html>

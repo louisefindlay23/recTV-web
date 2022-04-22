@@ -12,6 +12,7 @@ movieRouter.use(
         extended: true,
     })
 );
+
 movieRouter.use(bodyParser.json());
 
 // Movie Routes

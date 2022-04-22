@@ -4,13 +4,15 @@
 </head>
 <body>
     <header>
-        <h1>Season: <%= tv.data.season_number %></h1>
+        <%- include('../../partials/navbar') %>
     </header>
+    
     <main class="season">
+    <h1>Season: <%= tv.data.season_number %></h1>
     <% if (tv.data.poster_path) { %>
         <img class="poster" src="https://www.themoviedb.org/t/p/w1280<%= tv.data.poster_path %>" />
     <% } else { %>
-        <img src="/img/fallback-poster.png" />
+        <img alt="fallback-poster" src="/img/fallback-poster.png" />
     <% } %>
     <p><%= tv.data.overview %></p>
     <h2>Episodes</h2>
