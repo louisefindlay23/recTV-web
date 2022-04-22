@@ -8,29 +8,30 @@
   </head>
 
   <body>
-    <header>
-        <%- include('../../partials/navbar') %>
-    </header>
+    <header><%- include('../../partials/navbar') %></header>
     <main>
-        <h1>Episode <%= tv.data.episode_number %>: <%= tv.data.name %></h1>
       <% if (tv.data.still_path) { %>
       <img
-        class="poster"
+        class="poster-main"
         alt="poster"
         src="https://www.themoviedb.org/t/p/w1280<%= tv.data.still_path %>"
       />
       <% } else { %>
       <img alt="fall-back" src="/img/fallback-poster.png" />
       <% } %>
-      <p><%= tv.data.overview %></p>
-      <h3>Discover Recommendations for Another Show</h3>
-      <form id="search-media" method="POST">
-        <label for="searchbar">Search</label>
-        <input id="search-bar" name="searchbar" type="search" required />
-        <button id="search-tv" type="submit">Search</button>
-      </form>
+
+      <div class="container">
+        <br>
+        <h4>Episode <%= tv.data.episode_number %>: <%= tv.data.name %></h4>
+        <p><%= tv.data.overview %></p>
+        <h5>Discover Recommendations for Another Show</h5>
+        <form id="search-media" method="POST">
+          <label for="searchbar">Search</label>
+          <input id="search-bar" name="searchbar" type="search" required />
+          <button id="search-tv" type="submit">Search</button>
+        </form>
+      </div>
     </main>
     <footer><%- include('../../partials/footer') %></footer>
   </body>
-  
 </html>
