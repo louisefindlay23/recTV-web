@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rectv
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rectv
+  template:
+    metadata:
+      labels:
+        app: rectv
+    spec:
+      containers:
+      - name: rectv
+        image: louisefindlay23/rectv:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: ".5Gi"
+            cpu: "500m"
+          limits:
+            memory: ".5Gi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
