@@ -30,7 +30,7 @@ tvRouter.post("/search", function (req, res) {
             },
         })
         .then(function (response) {
-            console.info(response.data.results);
+            // console.info(response.data.results);
             res.render("pages/tv/search", {
                 tv: response,
                 searchQuery: searchQuery,
@@ -52,7 +52,7 @@ tvRouter.get("/:tv/season/:season", function (req, res) {
             }
         )
         .then(function (response) {
-            console.info(response.data);
+            //console.info(response.data);
             res.render("pages/tv/season", {
                 tv: response,
                 id: req.params.tv,
@@ -74,7 +74,7 @@ tvRouter.get("/:tv/season/:season/episode/:episode", function (req, res) {
             }
         )
         .then(function (response) {
-            console.info(response.data);
+            //console.info(response.data);
             res.render("pages/tv/episode", {
                 tv: response,
             });
@@ -155,7 +155,7 @@ async function dislikedRecommendations(genres) {
             console.info(genre);
     }
     console.info(genre);
-    axios
+    return axios
         .get(`https://api.themoviedb.org/3/discover/tv`, {
             params: {
                 api_key: process.env.TMDB_API_KEY,
@@ -163,7 +163,6 @@ async function dislikedRecommendations(genres) {
             },
         })
         .then(function (response) {
-            //console.info(response.data.results);
             return response.data.results;
         })
         .catch(function (error) {
@@ -187,6 +186,7 @@ tvRouter.get("/:id", function (req, res) {
             console.info(oppositeGenre);
             res.render("pages/tv/index", {
                 tv: response,
+                dislikedRecommendations: oppositeGenre,
             });
         })
         .catch(function (error) {

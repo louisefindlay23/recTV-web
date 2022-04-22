@@ -2,25 +2,23 @@
 <html lang="en">
     <head>
         <%- include('../../partials/head') %>
-        <title>Movie Search - recTV</title>
+        <title>Search Results For Movie: <%- searchQuery %> - recTV</title>
     </head>
     <body>
         <header>
-            <%- include('../../partials/navbar') %>        
+            <h1>Search Results For Movie: <%- searchQuery %></h1>
         </header>
         <main>
-            <h4>Search Results</h4>
-
             <div class="grid-row">
                 <% movies.data.results.forEach(function(movie) { %>
                 <div class="card">
                     <a href="/tv/<%= movie.id %>">
                         <% if (movie.poster_path) { %>
-                        <img alt="Poster"
+                        <img
                             src="https://www.themoviedb.org/t/p/w1280<%= movie.poster_path %>"
                         />
                         <% } else { %>
-                        <img alt="fallback-poster" src="/img/fallback-poster.png" />
+                        <img src="/img/fallback-poster.png" />
                         <% } %>
                         <p><%= movie.original_title %></p>
                     </a>
