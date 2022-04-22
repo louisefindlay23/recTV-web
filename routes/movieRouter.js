@@ -33,6 +33,7 @@ movieRouter.post("/search", function (req, res) {
             console.info(response.data.results);
             res.render("pages/movie/search", {
                 movies: response,
+                searchQuery: searchQuery,
             });
         })
         .catch(function (error) {
