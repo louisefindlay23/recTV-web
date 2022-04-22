@@ -11,24 +11,36 @@
             </header>
             
         </header>
-        <main>
-            <h1 style="margin-left: 20px;">Search Results For TV Show: <%- searchQuery %></h1>
-            <div class="grid-row">
-                <% tv.data.results.forEach(function(show) { %>
-                <div class="card">
-                    <a href="/tv/<%= show.id %>">
-                        <% if (show.poster_path) { %>
-                        <img alt=""
-                            src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
-                        />
-                        <% } else { %>
-                        <img alt="" src="/img/fallback-poster.png" />
-                        <% } %>
-                        <p><%= show.original_name %></p>
-                    </a>
+        <main class="container">
+            <br>
+            <h4 class="text-center">Search Results For TV Show: <%- searchQuery %></h4>
+
+            <div class="album py-5 bg-light">
+                  
+                <div class="row">
+                  <% tv.data.results.forEach(function(show) { %>
+                    <div class="col-md-3">
+                      
+                    <div class="card mb-4 shadow-sm">
+                        <a href="/tv/<%= show.id %>">
+                            <% if (show.poster_path) { %>
+                            <img alt=""
+                                src="https://www.themoviedb.org/t/p/w1280<%= show.poster_path %>"
+                            />
+                            <% } else { %>
+                            <img alt="" src="/img/fallback-poster.png" />
+                            <% } %>
+                        </a>
+                    </div>
+                  
+                  </div>
+                  <% }); %>
+              </div>
+      
                 </div>
-                <% }); %>
+              </div>
             </div>
+          </div>
         </main>
         <footer><%- include('../../partials/footer') %></footer>
     </body>

@@ -6,24 +6,39 @@
     </head>
     <body>
         <header>
-            <h1>Search Results For Movie: <%- searchQuery %></h1>
+            <%- include('../../partials/navbar') %>
         </header>
-        <main>
-            <div class="grid-row">
-                <% movies.data.results.forEach(function(movie) { %>
-                <div class="card">
-                    <a href="/movie/<%= movie.id %>">
-                        <% if (movie.poster_path) { %>
-                        <img alt=""
-                            src="https://www.themoviedb.org/t/p/w1280<%= movie.poster_path %>"
-                        />
-                        <% } else { %>
-                        <img alt="" src="/img/fallback-poster.png" />
-                        <% } %>
-                        <p><%= movie.original_title %></p>
-                    </a>
+        <main class="container">
+            <br>
+            <h4 class="text-center">Search Results For Movie: <%- searchQuery %></h4>
+
+            <div class="album py-5 bg-light">
+                  
+                  <div class="row">
+                    <% movies.data.results.forEach(function(movie) { %>
+                      <div class="col-md-3">
+                        
+                      <div class="card mb-4 shadow-sm">
+                        <a href="/movie/<%= movie.id %>">
+                            <% if (movie.poster_path) { %>
+                            <img class="poster" alt=""
+                                src="https://www.themoviedb.org/t/p/w1280<%= movie.poster_path %>"
+                            />
+                            <% } else { %>
+                            <img alt="" src="/img/fallback-poster.png" />
+                            <% } %>
+                        </a>
+        
+                      </div>
+                    
+                     
+                    </div>
+                    <% }); %>
                 </div>
-                <% }); %>
+        
+                  </div>
+                </div>
+              </div>
             </div>
         </main>
         <br>

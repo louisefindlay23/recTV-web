@@ -1,57 +1,60 @@
 body {
-    font-family: "Lato";
+  font-family: "Lato";
 }
 
-.main-par{
-    font-size: large;
-    margin-bottom: 20px;
+.main-par {
+  font-size: large;
+  margin-bottom: 20px;
 }
 
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+
+h4{
+    margin-top: 10px;
+}
+
+h5{
+    margin-top: 10px;
 }
 
 .grid-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: auto;
-    grid-gap: 2rem;
-    margin: 5%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: auto;
+  grid-gap: 2rem;
+  margin-bottom: 5px;
 }
 
-.card {
+/* .card {
     box-sizing: border-box;
     padding: 2.5%;
     margin: 2.5% 0;
-}
+} */
 
 .card img,
 .poster {
-    width: 90%;
-    height: 300px;
-    display: block;
-    margin: 2.5% auto;
-    border-radius: 4px;
+  width: 100%;
+  height: 300px;
 }
 
 .season .card img {
-    height: auto;
+  height: auto;
 }
 
-.poster {
+/* .poster {
     width: auto;
+} */
+
+/* main p {
+  width: 80%;
+  margin: auto;
+} */
+
+.poster-main {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 
-main p {
-    width: 80%;
-    margin: auto;
-}
-
-.card a {
-    text-decoration: none;
-}
-
-.card p {
-    width: auto;
-    margin-left: 0;
-}
