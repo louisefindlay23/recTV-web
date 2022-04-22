@@ -169,16 +169,40 @@ movieRouter.get("/:id", function (req, res) {
             },
         })
         .then(async function (response) {
-            console.info(response.data);
+            const movie = response;
             const oppositeGenre = await dislikedRecommendations(
                 response.data.genres
             );
             //console.info(oppositeGenre);
-
-            res.render("pages/movie/index", {
-                movies: response,
-                dislikedRecommendations: oppositeGenre,
-            });
+            if (movie.data.belongs_to_collection) {
+                axios
+                    .get(
+                        `https://api.themoviedb.org/3/collection/${movie.data.belongs_to_collection.id}`,
+                        {
+                            params: {
+                                api_key: process.env.TMDB_API_KEY,
+                            },
+                        }
+                    )
+                    .then(function (response) {
+                        const collection = response;
+                        //console.info(collection);
+                        res.render("pages/movie/index", {
+                            movie: movie,
+                            dislikedRecommendations: oppositeGenre,
+                            collection: collection,
+                        });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            } else {
+                res.render("pages/movie/index", {
+                    movie: movie,
+                    dislikedRecommendations: oppositeGenre,
+                    collection: null,
+                });
+            }
         })
         .catch(function (error) {
             console.log(error);
